@@ -12,7 +12,7 @@
             Error en el registro. Inténtalo de nuevo.
         </div>
     }
-    <form class="col-md-5 ml-0 pl-0" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <form class="col-md-5 ml-0 pl-0" #userEditForm="ngForm" (ngSubmit)="onSubmit(userEditForm)">
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="user.name" 
@@ -50,18 +50,39 @@
         </div>
 
         <div class="form-group">
-            <label for="name">Contraseña</label>
-            <input type="password" class="form-control" name="password" #password="ngModel" [(ngModel)]="user.password" 
-                required>
-
-            @if (!password.valid && password.touched) {
-                <small class="invalid-feedback d-block">
-                    La contraseña no es válida
-                </small>
+            <label>Imagen del artículo</label><br>
+            {{fileName || "Ninguna imagen seleccionada"}}
+            @if (fileName) {
+                <img src="{{url + 'avatar/' + fileName}}" class="avatar_edit">
             }
+            @else {
+                <img src="{{url + 'avatar/' + user.image}}" class="avatar_edit">
+            }
+            <!-- <button mat-mini-fab color="primary" class="btn upload-btn"
+            (click)="filePostUpload.click()">
+                <i>Selecciona imagen del artículo</i>
+            </button>
+        
+
+            <div class="form-group">
+                <label for="imagenInput">Avatar</label>
+                <input id="imagenInput" type="file" class="file-input" name="image" #filePostUpload #image="ngModel" [(ngModel)]="user.image"
+                    (change)="onFileSelected($event)">
+            </div>-->
+            <div class="form-group">
+                <label>Sube tu avatar</label>
+                <input type="file" (change)="onFileSelected($event)">
+                <button (click)="uploadAvatar()" [disabled]="!selectedFile">Upload</button>
+              </div>
         </div>
 
+        <!--<div class="form-group">
+            <label>Sube tu avatar</label>
+            <input type="file" (change)="uploadAvatar($event)" name="image" #filePostUpload #image="ngModel" [(ngModel)]="user.image">
+            <!-- <button (click)="uploadAvatar($event)" [disabled]="!selectedFile">Upload</button> 
+        </div> -->
+
         <!-- botones -->
-         <input type="submit" value="{{page_title}}" class="btn btn-success" [disabled]="registerForm.invalid">
+         <input type="submit" value="Guardar" class="btn btn-success" [disabled]="userEditForm.invalid">
     </form>
 </div>
