@@ -58,18 +58,21 @@ export class UserEditComponent implements OnInit{
     if (this.selectedFile) {
       this._userService.uploadUserImage(this.selectedFile, this.fileName, this.token).subscribe(
         response => {
-          console.log("RESPONSE: " + response.status);
-          if (response && response.status == 'success') {
+          console.log("RESPONSE: " + response.message);
+          if (response) {
             this.status = "successFoto";
-            this.user.image = response.image;
-            this.fileName = response.image;
-            console.log("Nombre de la imagen: " + response.image);
+            this.user.image = response.file_name;
+            this.identity.image = response.file_name;
+            this.fileName = response.file_name;
+            localStorage.setItem('identity', JSON.stringify(this.identity))
+            console.log("Nombre de la imagen: " + response.file_name);
             //localStorage.setItem('identity', JSON.stringify(this.identity));
           }
           else {
             this.status = 'errorFoto';
+            console.log('Error foto');
           }
-          console.log("Respuesta: " + response.image);
+          console.log("Respuesta: " + response.file_name);
         }
       );
     }
