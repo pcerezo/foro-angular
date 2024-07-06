@@ -52,3 +52,8 @@ input[type="file"] {
 .upload-button:hover:enabled {
     background-color: #007B9A;
 }
+
+.avatar_edit {
+    height: 100px;
+    width: 100px;
+}

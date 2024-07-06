@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { global } from './services/global';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ export class AppComponent implements OnInit, DoCheck{
   title = 'foro-angular';
   public identity: any;
   public token: any;
+  public url: string;
 
   constructor(
     private _userService: UserService,
@@ -26,6 +28,7 @@ export class AppComponent implements OnInit, DoCheck{
   ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.url = global.url;
   }
   ngDoCheck(): void {
     this.identity = this._userService.getIdentity();
