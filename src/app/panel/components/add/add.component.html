@@ -1,1 +1,55 @@
-<p>add works!</p>
+<div class="col-lg-12">
+    <h3>{{page_title}}</h3>
+
+    <form #addTopic="ngForm" (submit)="onSubmit(addTopic)">
+        <!-- Título -->
+        <div class="form-group">
+            <label for="name">Título</label>
+            <input type="text" class="form-control" name="title" #title="ngModel" [(ngModel)]="topic.title" required pattern="[a-zA-ZÀ-ÿ ]+">
+
+            @if (!title.valid && title.touched) {
+                <small class="invalid-feedback d-block">
+                    El título no es válido
+                </small>
+            }
+        </div>
+
+        <!-- CONTENIDO -->
+        <div class="form-group">
+            <label for="name">Contenido</label>
+            <textarea type="text" class="form-control" name="content" #content="ngModel" [(ngModel)]="topic.content" required pattern="[a-zA-ZÀ-ÿ ]+"></textarea>
+
+            @if (!content.valid && content.touched) {
+                <small class="invalid-feedback d-block">
+                    El contenido no es válido
+                </small>
+            }
+        </div>
+
+        <!-- CODE -->
+        <div class="form-group">
+            <label for="name">Código</label>
+            <textarea type="text" class="form-control" name="code" #code="ngModel" [(ngModel)]="topic.code" required pattern="[a-zA-ZÀ-ÿ ]+"></textarea>
+
+            @if (!code.valid && code.touched) {
+                <small class="invalid-feedback d-block">
+                    El código no es válido
+                </small>
+            }
+        </div>
+
+        <!-- IDIOMA -->
+        <div class="form-group">
+            <label for="name">Idioma</label>
+            <input type="text" class="form-control" name="lang" #lang="ngModel" [(ngModel)]="topic.lang" required pattern="[a-zA-ZÀ-ÿ ]+">
+
+            @if (!lang.valid && lang.touched) {
+                <small class="invalid-feedback d-block">
+                    El idioma no es válido
+                </small>
+            }
+        </div>
+
+        <input type="submit" value="{{page_title}}" class="btn btn-success" [disabled]="addTopic.invalid">
+    </form>
+</div>

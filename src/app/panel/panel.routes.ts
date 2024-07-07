@@ -5,12 +5,12 @@ import { AddComponent } from "./components/add/add.component";
 import { EditComponent } from "./components/edit/edit.component";
 
 export const panelRoutes: Routes = [
-    {path: 'panel', component: MainComponent}, 
-        //children: [
-           // {path: '', component: ListComponent},
-            {path: 'panel/listado', component: ListComponent},
-            {path: 'panel/crear', component: AddComponent},
-            {path: 'panel/editar/:id', component: EditComponent}
-        //]
-    //}
+    {path: 'panel', component: MainComponent, 
+        children: [
+            {path: '', component: ListComponent},
+            {path: 'listado', component: ListComponent},
+            {path: 'crear', component: AddComponent},
+            {path: 'editar/:id', component: EditComponent}
+        ]
+    }
 ];
