@@ -6,11 +6,12 @@ import { UserService } from './services/user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { global } from './services/global';
+import { PanelComponent } from './panel/panel.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RegisterComponent, LoginComponent, RouterLink, HttpClientModule, UserEditComponent],
+  imports: [RouterOutlet, RegisterComponent, LoginComponent, RouterLink, HttpClientModule, UserEditComponent, PanelComponent],
   providers: [UserService],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
