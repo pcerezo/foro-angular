@@ -17,7 +17,7 @@
         <!-- CONTENIDO -->
         <div class="form-group">
             <label for="name">Contenido</label>
-            <textarea type="text" class="form-control" name="content" #content="ngModel" [(ngModel)]="topic.content" required pattern="[a-zA-ZÀ-ÿ ]+"></textarea>
+            <textarea type="text" class="form-control" name="content" #content="ngModel" [(ngModel)]="topic.content" required></textarea>
 
             @if (!content.valid && content.touched) {
                 <small class="invalid-feedback d-block">
@@ -29,7 +29,7 @@
         <!-- CODE -->
         <div class="form-group">
             <label for="name">Código</label>
-            <textarea type="text" class="form-control" name="code" #code="ngModel" [(ngModel)]="topic.code" required pattern="[a-zA-ZÀ-ÿ ]+"></textarea>
+            <textarea type="text" class="form-control" name="code" #code="ngModel" [(ngModel)]="topic.code"></textarea>
 
             @if (!code.valid && code.touched) {
                 <small class="invalid-feedback d-block">
