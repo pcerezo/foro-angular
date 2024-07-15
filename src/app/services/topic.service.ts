@@ -44,4 +44,10 @@ export class TopicService {
 
         return this._http.get(this.url + 'topic/' + topic_id, {headers: headers});
     }
+
+    deleteTopic(token: any, topic_id: any): Observable<any> {
+        let headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', token);
+
+        return this._http.delete(this.url + 'topic/' + topic_id, {headers: headers});
+    }
 }
